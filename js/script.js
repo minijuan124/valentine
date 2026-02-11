@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // LISTA DE TODAS TUS IMÁGENES
+        // LISTA DE IMÁGENES (Asegúrate de que los nombres coincidan exactamente en tu carpeta assets)
         const imagenesFlotantes = [
             "assets/dog.png",
             "assets/kirby.png",
@@ -50,44 +50,32 @@ document.addEventListener('DOMContentLoaded', () => {
             "assets/1c.png"
         ];
 
-        // Función para crear una imagen
         function crearImagenFlotante() {
             const img = document.createElement('img');
-            
-            // Elegir una imagen al azar de la lista
             const imagenAzar = imagenesFlotantes[Math.floor(Math.random() * imagenesFlotantes.length)];
             img.src = imagenAzar;
-            
             img.classList.add('floating-img');
             
-            // --- TAMAÑO MÁS GRANDE ---
-            const size = Math.random() * 80 + 100; // Entre 100px y 180px
+            const size = Math.random() * 80 + 100; // Tamaño entre 100px y 180px
             img.style.width = size + 'px';
             img.style.height = 'auto';
-            
-            // Posición horizontal (0 a 85 para que no se corte a la derecha)
             img.style.left = Math.random() * 85 + 'vw';
             img.style.top = '100vh';
 
             document.body.appendChild(img);
 
-            // Eliminar después de 3.5 segundos (lo que dura la animación CSS)
             setTimeout(() => {
                 img.remove();
             }, 3500);
         }
 
-        // RÁFAGA INICIAL
         for(let i = 0; i < 20; i++) {
             setTimeout(crearImagenFlotante, i * 100);
         }
-
-        // LANZAMIENTO INFINITO (Cada 400ms sale una nueva)
         setInterval(crearImagenFlotante, 400);
     });
 });
 
-// Funciones de navegación
 function showText(event) {
     event.stopPropagation();
     document.getElementById('step1').classList.add('hidden');
