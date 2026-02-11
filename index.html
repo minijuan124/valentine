@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para mi Currucucu</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="header-text">
+        <img src="/assets/dog.png" alt="" class="src" />
+        <p>Abre tontis</p>
+      </div>
+      <div class="envelope-wrapper" id="envelope">
+        <div class="animated-mail">
+          <div class="back-fold"></div>
+
+          <div class="card" id="mainCard">
+            <div class="card-content" id="step1">
+              <img src="assets/her.jpeg" alt="Nosotros" class="profile-img" />
+              <h2 class="script-font">
+                Para el amor de mi vida, mi pupuchurra
+              </h2>
+              <div class="kirby-container">
+                <img src="/assets/kirby.png" alt="" class="sr" />
+                <button class="next-btn" onclick="showText(event)">
+                  Abrir
+                </button>
+              </div>
+            </div>
+
+            <div class="card-content hidden" id="step2">
+              <div class="img-and-text">
+                <p class="message-text">
+                  Mi pupuchurra, mi vida entera, mi compañera de vida y de
+                  aventuras, se acerca una fecha en donde puedo legalmente ser
+                  mil veces más cursi de lo normal, eres todo lo que he querido
+                  y más, que afortunado soy de poder amarte y gritarlo al mundo,
+                  la mujer más espectacular que existe es mi novia, te amo tanto
+                  que no lo puedo expresar en palabras. Con todo este
+                  sentimiento, mi linda bella, te quiero pedir algo importante
+                  :)
+                </p>
+                <img src="/assets/hamster.png" alt="" />
+              </div>
+              <button class="next-btn" onclick="showQuestion(event)">
+                Continuar
+              </button>
+            </div>
+
+            <div class="card-content hidden" id="step3">
+              <h2 class="question-text">¿Quieres ser mi Valentín?</h2>
+              <div class="btn-group">
+                <button class="btn-yes" id="yesBtn">SÍ</button>
+                <button class="btn-no" id="noBtn">NO</button>
+              </div>
+              <img src="/assets/eyebrow.png" alt="" class="eyebrow">
+            </div>
+          </div>
+
+          <div class="flowers">
+            <img src="assets/sunflow.png" alt="flores" />
+          </div>
+
+          <div class="top-fold"></div>
+          <div class="body-envelope"></div>
+          <div class="left-fold"></div>
+          <div class="right-fold"></div>
+        </div>
+      </div>
+      <div id="response" class="response-message"></div>
+    </div>
+
+    <audio id="miMusica" loop>
+      <source
+        src="assets/one-direction_one-direction-kiss-you.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <script src="js/script.js"></script>
+  </body>
+</html>

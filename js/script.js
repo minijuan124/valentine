@@ -1,0 +1,101 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const envelope = document.getElementById('envelope');
+    const musica = document.getElementById('miMusica');
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+
+    // 1. Abrir sobre
+    envelope.addEventListener('click', function(e) {
+        if (!this.classList.contains('open')) {
+            this.classList.add('open');
+            musica.play().catch(e => console.log("La música requiere interacción previa"));
+            
+            const instructions = document.querySelector('.header-text p');
+            if(instructions) instructions.style.opacity = '0';
+        }
+    });
+
+    // 2. Lógica del botón NO que huye
+    noBtn.addEventListener('mouseover', () => {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = x + 'px';
+        noBtn.style.top = y + 'px';
+    });
+
+    // 3. Botón SI con ráfaga infinita de imágenes
+    yesBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        const gifUrl = "assets/ayy.png"; 
+        
+        // Cambiamos el contenido de la carta
+        document.getElementById('mainCard').innerHTML = `
+            <div class="final-message">
+                <h1 class="love-mail">Ay tontis teamo❤️</h1>
+                <img src="${gifUrl}" alt="Celebración" class="celebration-gif">
+            </div>
+        `;
+
+        // LISTA DE TODAS TUS IMÁGENES
+        const imagenesFlotantes = [
+            "assets/dog.png",
+            "assets/kirby.png",
+            "assets/hamster.png",
+            "assets/eyebrow.png",
+            "assets/1d.png",
+            "assets/1a.png",
+            "assets/1b.png",
+            "assets/1c.png"
+        ];
+
+        // Función para crear una imagen
+        function crearImagenFlotante() {
+            const img = document.createElement('img');
+            
+            // Elegir una imagen al azar de la lista
+            const imagenAzar = imagenesFlotantes[Math.floor(Math.random() * imagenesFlotantes.length)];
+            img.src = imagenAzar;
+            
+            img.classList.add('floating-img');
+            
+            // --- TAMAÑO MÁS GRANDE ---
+            const size = Math.random() * 80 + 100; // Entre 100px y 180px
+            img.style.width = size + 'px';
+            img.style.height = 'auto';
+            
+            // Posición horizontal (0 a 85 para que no se corte a la derecha)
+            img.style.left = Math.random() * 85 + 'vw';
+            img.style.top = '100vh';
+
+            document.body.appendChild(img);
+
+            // Eliminar después de 3.5 segundos (lo que dura la animación CSS)
+            setTimeout(() => {
+                img.remove();
+            }, 3500);
+        }
+
+        // RÁFAGA INICIAL
+        for(let i = 0; i < 20; i++) {
+            setTimeout(crearImagenFlotante, i * 100);
+        }
+
+        // LANZAMIENTO INFINITO (Cada 400ms sale una nueva)
+        setInterval(crearImagenFlotante, 400);
+    });
+});
+
+// Funciones de navegación
+function showText(event) {
+    event.stopPropagation();
+    document.getElementById('step1').classList.add('hidden');
+    document.getElementById('step2').classList.remove('hidden');
+}
+
+function showQuestion(event) {
+    event.stopPropagation();
+    document.getElementById('step2').classList.add('hidden');
+    document.getElementById('step3').classList.remove('hidden');
+}
